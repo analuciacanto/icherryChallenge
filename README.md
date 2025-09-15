@@ -136,6 +136,31 @@ function resumirPedido(pedido){
 ```
 A função percorre a lista de itens do pedido, soma os preços para calcular o total e retorna um novo objeto contendo o ID, o total e a quantidade de itens, mantendo apenas as informações relevantes para envio ao GA4.
 
+### 3. Funções Reutilizáveis
+Cenário:
+Você precisa criar uma função que formate preços para o padrão brasileiro (R$ 0,00).  
+
+Tarefa:  
+Implemente uma função formatarPreco que:  
+• Receba um número e retorne uma string formatada no padrão brasileiro.  
+• Utilize Intl.NumberFormat.  
+• Depois, use essa função para formatar todos os preços do array abaixo:  
+const precos = [50, 120, 250];  
+
+#### Resposta 
+Para esta questão, foi criada a função formatarPreco, que recebe um número e retorna uma string formatada como preço no padrão brasileiro (R$ 0,00), utilizando Intl.NumberFormat. Em seguida, aplicamos essa função a todos os preços do array precos por meio do método map, gerando um novo array com os valores formatados.
+
+```
+function formatarPreco(preco) {
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(preco);
+}
+const precos = [50, 120, 250];
+const precosFormatados = precos.map(formatarPreco);
+
+console.log(precosFormatados); // Retorna os preços formatados: ["R$ 50,00", "R$ 120,00", "R$ 250,00"]
+``` 
+Dessa forma, todos os valores são apresentados de maneira consistente no padrão monetário brasileiro, permitindo seu uso direto em interfaces ou relatórios.
+
 ### 6. Google Tag Manager – Configuração Intermediária
 Explique como você configuraria no GTM um evento add_to_cart que:
 
