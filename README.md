@@ -1,3 +1,27 @@
+# Teste Técnico Vaga de Desenvolvedor Pleno
+
+Este projeto visa atender aos requisitos do desafio técnico proposto para a vaga de Desenvolvedor Pleno. O projeto foi desenvolvido em JavaScript com Node.js v18. As respostas ao desafio para as tarefas de 1-5 estão organizadas tanto aqui no README quanto em pastas específicas do repositório e para as questão 6-9 estão no README. 
+
+### Como executar
+Cada questão possui sua própria pasta. Para rodar, basta entrar na pasta correspondente e executar:
+
+```
+node index.js
+```
+
+### 1. Manipulação Intermediária do DOM
+Cenário:
+Você precisa capturar cliques em todos os botões com a classe .adicionar-carrinho e enviar
+para o console um objeto contendo:
+• ID do produto (armazenado no atributo data-id do botão)
+• Nome do produto (armazenado no atributo data-nome)
+• Hora do clique no formato YYYY-MM-DD HH:mm:ss
+Tarefa:
+Implemente um código JavaScript puro que faça essa captura e exiba os dados no console.
+
+#### Resposta
+
+
 ### 6. Google Tag Manager – Configuração Intermediária
 Explique como você configuraria no GTM um evento add_to_cart que:
 
