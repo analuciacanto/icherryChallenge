@@ -101,8 +101,6 @@ Escreva uma função resumirPedido que retorne um novo objeto contendo:
 Dado um objeto com informações de um pedido, a função resumirPedido extrai apenas os dados necessários: o ID do pedido, o total do valor dos itens e a quantidade de itens.
 
 ```
-// Questão 2
-
 const pedido = { 
  id: 987, 
  cliente: { nome: "João Silva", email: "joao@email.com" }, 
@@ -112,14 +110,6 @@ const pedido = {
  ], 
  status: "pago" 
 };
-
-/*
-Função resumirPedido que retorne um novo objeto contendo: 
-{ 
- id: 987, 
- total: 170, 
- quantidadeItens: 2 
-}*/
 
 function resumirPedido(pedido){
 
@@ -278,10 +268,7 @@ dataLayer.push({
   }
 });
 ```
-Depois, dentro do GTM, eu crio variáveis para pegar esses valores (item_id, item_name, price). Com essas variáveis consigo garantir que a tag do GA4 pegue os dados de forma dinâmica, sem que seja necessário alterar o código a todo momento
-Em seguida, crio um trigger de evento add_to_cart, para ouvir esse evento sempre que ele aparecer no Data Layer. Ela age diferente das triggers que acionam com o clique de botão, pois ela só acionará quando os dados estiverem realmente disponíveis.
-E então, eu monto uma tag no GA4, dou o nome de evento add_to_cart, passo os parâmetros usando as variáveis que criei, e coloco para disparar com o trigger do add_to_cart criada anteriormente
-Por fim, com o preview modo do GTM eu consigo conferir se o evento está sendo disparada e as varíáveis estão corretas e no debug do GA4 verifico a chegada correta do dados, garantindo assim uma validação completa de todo o ciclo. 
+Depois, dentro do GTM, eu crio variáveis para pegar esses valores (item_id, item_name, price). Com essas variáveis, consigo garantir que a tag do GA4 pegue os dados de forma dinâmica, sem que seja necessário alterar o código a todo momento. Em seguida, crio um trigger de evento add_to_cart, para ouvir esse evento sempre que ele aparecer no Data Layer. Ela age diferente das triggers que acionam com o clique de botão, pois só acionará quando os dados estiverem realmente disponíveis. E então, eu monto uma tag no GA4, dou o nome de evento add_to_cart, passo os parâmetros usando as variáveis que criei e coloco para disparar com o trigger do add_to_cart criado anteriormente. Por fim, com o preview modo do GTM, eu consigo conferir se o evento está sendo disparado e se as variáveis estão corretas, e no debug do GA4 verifico a chegada correta dos dados, garantindo assim uma validação completa de todo o ciclo.
 
 
 ### 7. Google Tag Manager – Data Layer
