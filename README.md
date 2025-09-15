@@ -210,6 +210,49 @@ obterValorDolar().then(valor => {
 ```
 A função utiliza async/await para lidar com a requisição de forma assíncrona e inclui tratamento de erros tanto para falhas na requisição quanto para exceções simuladas.
 
+### 5. Programação Funcional
+Cenário:
+Você recebeu um array de eventos de usuários e precisa saber quantos eventos de cada
+tipo ocorreram.  
+
+```
+const eventos = [
+  { tipo: "click" },
+  { tipo: "scroll" },
+  { tipo: "click" },
+  { tipo: "page_view" },
+  { tipo: "click" }
+];
+```
+Tarefa:
+Escreva uma função que retorne: { click: 3, scroll: 1, page_view: 1 }  
+
+#### Resposta
+
+Para esta questão, foi implementada a função contarEventos, que recebe um array de eventos de usuários e retorna um objeto com a quantidade de ocorrências de cada tipo de evento.
+
+```
+const eventos = [
+  { tipo: "click" },
+  { tipo: "scroll" },
+  { tipo: "click" },
+  { tipo: "page_view" },
+  { tipo: "click" }
+];
+
+function contarEventos(eventos) {
+  return eventos.reduce((quantidadeEventos, evento) => {
+    quantidadeEventos[evento.tipo] = (quantidadeEventos[evento.tipo] || 0) + 1; // Incrementa o contador para o tipo de evento, se não existir, inicializa com 0
+    return quantidadeEventos; 
+  }, {});
+}
+
+const resultado = contarEventos(eventos);
+console.log(resultado);
+```
+
+A função utiliza o método reduce para percorrer o array de eventos e acumular a quantidade de ocorrências de cada tipo em um objeto. Para cada evento, verifica-se se já existe uma chave correspondente no objeto; caso não exista, é inicializada com zero antes de ser incrementada. O resultado final fornece a contagem de eventos por tipo.
+
 ### 6. Google Tag Manager – Configuração Intermediária
 Explique como você configuraria no GTM um evento add_to_cart que:
 
