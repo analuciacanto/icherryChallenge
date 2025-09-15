@@ -71,6 +71,71 @@ document.addEventListener('click', (evento) => {
 ```
 O código adiciona um listener que captura cliques em toda a página e verifica se o botão clicado tem a classe .adicionar-carrinho. Quando isso acontece, ele pega o ID, o nome do produto e a hora do clique, organiza esses dados em um objeto e mostra no console. Isso permite monitorar todos os botões de adicionar ao carrinho de forma prática, mesmo que novos botões sejam incluídos depois.
 
+### 2. Manipulação de Strings e Objetos
+Cenário:
+Você recebeu um objeto com informações de um pedido, mas precisa extrair apenas alguns
+dados para enviar ao GA4.
+```
+const pedido = {
+  id: 987,
+  cliente: { nome: "João Silva", email: "joao@email.com" },
+  itens: [
+    { nome: "Camiseta", preco: 50 },
+    { nome: "Calça", preco: 120 }
+    ],
+  status: "pago"
+  };
+```
+
+Tarefa:
+Escreva uma função resumirPedido que retorne um novo objeto contendo:
+```
+{
+  id: 987,
+  total: 170,
+  quantidadeItens: 2
+}
+```
+
+#### Resposta
+Dado um objeto com informações de um pedido, a função resumirPedido extrai apenas os dados necessários: o ID do pedido, o total do valor dos itens e a quantidade de itens.
+
+```
+// Questão 2
+
+const pedido = { 
+ id: 987, 
+ cliente: { nome: "João Silva", email: "joao@email.com" }, 
+ itens: [ 
+   { nome: "Camiseta", preco: 50 }, 
+   { nome: "Calça", preco: 120 } 
+ ], 
+ status: "pago" 
+};
+
+/*
+Função resumirPedido que retorne um novo objeto contendo: 
+{ 
+ id: 987, 
+ total: 170, 
+ quantidadeItens: 2 
+}*/
+
+function resumirPedido(pedido){
+
+  // Calcula o valor total dos itens no pedido
+    const valorTotal = pedido.itens.reduce((soma, item) => soma + item.preco, 0);
+
+   return {
+        id: pedido.id,
+        total: valorTotal,
+        quantidadeItens: pedido.itens.length
+    };}
+
+// console.log(resumirPedido(pedido)); 
+```
+A função percorre a lista de itens do pedido, soma os preços para calcular o total e retorna um novo objeto contendo o ID, o total e a quantidade de itens, mantendo apenas as informações relevantes para envio ao GA4.
+
 ### 6. Google Tag Manager – Configuração Intermediária
 Explique como você configuraria no GTM um evento add_to_cart que:
 
