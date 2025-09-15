@@ -10,17 +10,66 @@ node index.js
 ```
 
 ### 1. Manipulação Intermediária do DOM
-Cenário:
+Cenário:  
 Você precisa capturar cliques em todos os botões com a classe .adicionar-carrinho e enviar
-para o console um objeto contendo:
-• ID do produto (armazenado no atributo data-id do botão)
-• Nome do produto (armazenado no atributo data-nome)
-• Hora do clique no formato YYYY-MM-DD HH:mm:ss
+para o console um objeto contendo:  
+• ID do produto (armazenado no atributo data-id do botão)  
+• Nome do produto (armazenado no atributo data-nome)  
+• Hora do clique no formato YYYY-MM-DD HH:mm:ss  
 Tarefa:
 Implemente um código JavaScript puro que faça essa captura e exiba os dados no console.
 
 #### Resposta
 
+Para resolver esta questão, criei um arquivo HTML com botões que simulam produtos de um carrinho. Os botões que devem ser monitorados possuem a classe _adicionar-carrinho_ e atributos data-id e data-nome, responsáveis por identificar o produto:
+
+```
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Questão 1</title>
+</head>
+<body>
+  <!-- Exemplo de botões com a classe .adicionar-carrinho-->
+
+  <button class="adicionar-carrinho" data-id="1000" data-nome="adicionar-lapis">Adicionar Lapis</button>
+  <button class="adicionar-carrinho" data-id="1001" data-nome="adicionar-caderno">Adicionar Caderno</button>
+  <button class="remover-carrinho" data-id="1002" data-nome="remover-caderno">Remover Caderno</button>
+
+  <!-- Importa o JavaScript externo -->
+  <script src="index.js"></script>
+</body>
+</html>
+```
+
+No arquivo JavaScript (index.js), foi implementado um listener de eventos que observa cliques em toda a página e processa apenas aqueles que ocorrem em botões com a classe .adicionar-carrinho:
+
+```
+import { formatarData } from '../Utils/index.js';
+
+// Captura cliques nos botões
+document.addEventListener('click', (evento) => {
+
+  // Verifica se o elemento clicado tem a classe adicionar-carrinho
+  if (evento.target.classList.contains('adicionar-carrinho')) {
+    // Pega dados do botão clicado
+    const botaoClicado = evento.target;
+    
+    const id = botaoClicado.dataset.id;       // ID do produto (armazenado no atributo data-id do botão) 
+    const nome = botaoClicado.dataset.nome;   // Nome do produto (armazenado no atributo data-nome) 
+
+    // Captura a hora do clique
+    const dataAtual = new Date();
+    const horaClique = formatarData(dataAtual); // Hora do clique no formato YYYY-MM-DD HH:mm:ss
+
+    const clique = { id, nome, horaClique };
+
+    console.log(clique);
+  }
+});
+```
+O código adiciona um listener que captura cliques em toda a página e verifica se o botão clicado tem a classe .adicionar-carrinho. Quando isso acontece, ele pega o ID, o nome do produto e a hora do clique, organiza esses dados em um objeto e mostra no console. Isso permite monitorar todos os botões de adicionar ao carrinho de forma prática, mesmo que novos botões sejam incluídos depois.
 
 ### 6. Google Tag Manager – Configuração Intermediária
 Explique como você configuraria no GTM um evento add_to_cart que:
